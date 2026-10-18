@@ -232,13 +232,27 @@ print("\n3.4:", json.dumps(cf, indent=1, ensure_ascii=False))
 # --------------------------------------------------------------------------- #
 # Apoyo para el Task 3.5
 # --------------------------------------------------------------------------- #
-# (a) Jaccard con N mayor (sigma_rel = 0.75) para extrapolar a Jaccard = 0.9
-extra = {}
-for n in (10000, 20000, 40000):
+# (a) N necesario para Jaccard = 0.9 con sigma_rel = 0.75.
+# En la tabla del 3.2 el Jaccard ya satura en 1.0 con N=5000, asi que 0.9 cae entre N=500 y N=2000.
+# Se interpola linealmente en log N entre esos dos puntos (el ruido de los coeficientes baja como
+# 1/sqrt(N_ef) y N_ef es proporcional a N, por eso se usa una escala logaritmica):
+#   J(N) ~ a + b log N   ->   N* = exp((0.9 - a) / b)
+# Luego se verifica con 20 corridas NUEVAS (semillas distintas a las del 3.2) en N* y en dos vecinos.
+S35, J_TARGET = "sig=0.75", 0.9
+n_lo, n_hi = 500, 2000
+j_lo, j_hi = jac.loc[f"N={n_lo}", S35], jac.loc[f"N={n_hi}", S35]
+b_ = (j_hi - j_lo) / (np.log(n_hi) - np.log(n_lo))
+a_ = j_lo - b_ * np.log(n_lo)
+n_star = int(round(np.exp((J_TARGET - a_) / b_), -1))
+nef_ratio = nef.loc[f"N={n_hi}", S35] / n_hi                          # N_ef / N con sigma_rel = 0.75
+verif = {}
+for n in (int(round(0.75 * n_star, -1)), n_star, int(round(1.25 * n_star, -1))):
     j_, ne_ = stability(n, 0.75, base_seed=5000)
-    extra[f"N={n}"] = dict(jaccard=j_, nef=ne_)
-R["t35a_extra"] = extra
-print("\n3.5a corridas adicionales (sigma=0.75):", extra)
+    verif[f"N={n}"] = dict(jaccard=j_, nef=ne_)
+R["t35a"] = dict(sigma_rel=0.75, puntos=dict(N=[n_lo, n_hi], jaccard=[float(j_lo), float(j_hi)]),
+                 a=float(a_), b=float(b_), N_estimado=n_star, Nef_estimado=float(n_star * nef_ratio),
+                 verificacion=verif)
+print("\n3.5a:", json.dumps(R["t35a"], indent=1))
 
 # (b) mayor discrepancia LIME vs SHAP: cliente y variable con mayor diferencia de rango
 best = (None, None, -1)
@@ -290,7 +304,3 @@ print("\n3.5d:", json.dumps(info, indent=1, ensure_ascii=False))
 
 json.dump(R, open(DIR / "resultados/task3.json", "w"), indent=2, ensure_ascii=False, default=float)
 print("\nListo -> resultados/task3.json")
-
-for n in (1500, 1800, 2000):
-    j_, ne_ = stability(n, 0.75, base_seed=7000)
-    print(n, round(j_, 3), round(ne_, 1))
