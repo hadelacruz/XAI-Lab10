@@ -1,0 +1,374 @@
+{
+  "seed": 42,
+  "clients": {
+    "good(p>0.8)": {
+      "idx": 95,
+      "p": 0.900545775925169
+    },
+    "rechazado": {
+      "idx": 134,
+      "p": 0.10259624113392175
+    },
+    "limite(p~0.5)": {
+      "idx": 87,
+      "p": 0.5039966989705523
+    }
+  },
+  "accuracy_check": {
+    "good_matches_task2": true,
+    "bad_matches_task2": true
+  },
+  "t31": {
+    "penaliza_intercepto": false,
+    "lam": 1.0,
+    "N": 5000,
+    "K": 5,
+    "sigma_rel": 0.75,
+    "good(p>0.8)": {
+      "idx": 95,
+      "p": 0.900545775925169,
+      "r2_K5": 0.33318151043382604,
+      "r2_full20": 0.35918429406322805,
+      "intercepto": 0.6649988207066175,
+      "coefs": [
+        [
+          "purpose",
+          "retraining",
+          0.17207815643826388
+        ],
+        [
+          "credit_amount",
+          339.0,
+          0.15281890813040067
+        ],
+        [
+          "checking_status",
+          "<0",
+          -0.11424337062973264
+        ],
+        [
+          "credit_history",
+          "all paid",
+          -0.11297967951230874
+        ],
+        [
+          "residence_since",
+          1.0,
+          0.08125012897230928
+        ]
+      ]
+    },
+    "rechazado": {
+      "idx": 134,
+      "p": 0.10259624113392175,
+      "r2_K5": 0.2080020608403741,
+      "r2_full20": 0.23034270454420647,
+      "intercepto": 0.6311288424106803,
+      "coefs": [
+        [
+          "duration",
+          36.0,
+          -0.15080220497239483
+        ],
+        [
+          "checking_status",
+          "<0",
+          -0.12534914986997014
+        ],
+        [
+          "purpose",
+          "education",
+          -0.10246946648592749
+        ],
+        [
+          "savings_status",
+          "<100",
+          -0.06564266912206598
+        ],
+        [
+          "age",
+          29.0,
+          -0.057942009277958645
+        ]
+      ]
+    },
+    "limite(p~0.5)": {
+      "idx": 87,
+      "p": 0.5039966989705523,
+      "r2_K5": 0.279012815461013,
+      "r2_full20": 0.29403677826711627,
+      "intercepto": 0.6351416998960562,
+      "coefs": [
+        [
+          "checking_status",
+          "no checking",
+          0.2408024673829746
+        ],
+        [
+          "duration",
+          36.0,
+          -0.15379103926819215
+        ],
+        [
+          "credit_amount",
+          909.0,
+          -0.10637336319698491
+        ],
+        [
+          "purpose",
+          "new car",
+          -0.07361726473069424
+        ],
+        [
+          "age",
+          36.0,
+          0.04381008068051762
+        ]
+      ]
+    }
+  },
+  "t32": {
+    "jaccard": {
+      "sig=0.5": {
+        "N=500": 0.6511,
+        "N=2000": 0.9351,
+        "N=5000": 1.0
+      },
+      "sig=0.75": {
+        "N=500": 0.6145,
+        "N=2000": 0.9351,
+        "N=5000": 1.0
+      },
+      "sig=1.5": {
+        "N=500": 0.607,
+        "N=2000": 0.8764,
+        "N=5000": 1.0
+      }
+    },
+    "nef": {
+      "sig=0.5": {
+        "N=500": 411.5,
+        "N=2000": 1640.9,
+        "N=5000": 4103.9
+      },
+      "sig=0.75": {
+        "N=500": 480.9,
+        "N=2000": 1922.6,
+        "N=5000": 4807.1
+      },
+      "sig=1.5": {
+        "N=500": 498.8,
+        "N=2000": 1995.1,
+        "N=5000": 4987.7
+      }
+    }
+  },
+  "t33a": {
+    "good(p>0.8)": {
+      "spearman": 0.9022556390977443,
+      "top3_lime": [
+        "purpose",
+        "credit_amount",
+        "checking_status"
+      ],
+      "top3_shap": [
+        "purpose",
+        "credit_amount",
+        "checking_status"
+      ],
+      "overlap": 3
+    },
+    "rechazado": {
+      "spearman": 0.8736842105263156,
+      "top3_lime": [
+        "duration",
+        "checking_status",
+        "purpose"
+      ],
+      "top3_shap": [
+        "duration",
+        "checking_status",
+        "purpose"
+      ],
+      "overlap": 3
+    },
+    "limite(p~0.5)": {
+      "spearman": 0.8691729323308269,
+      "top3_lime": [
+        "checking_status",
+        "duration",
+        "credit_amount"
+      ],
+      "top3_shap": [
+        "checking_status",
+        "duration",
+        "credit_amount"
+      ],
+      "overlap": 3
+    }
+  },
+  "t33b": {
+    "K=3": 0.17969812868716317,
+    "K=5": 0.2080020608403741,
+    "K=10": 0.22747635787366183,
+    "K=20": 0.23034270454420647
+  },
+  "t34": {
+    "max_changes": 3,
+    "validez": 0.07645,
+    "n_validos": 1529,
+    "proximidad_media": 2.4304176516942473,
+    "dispersion_media": 2.6666666666666665,
+    "proximidad_media_todos_validos": 7.281769478034594,
+    "dispersion_media_todos_validos": 2.5356442119032048,
+    "cfs": [
+      {
+        "vars": [
+          "duration",
+          "savings_status"
+        ],
+        "original": [
+          36.0,
+          "<100"
+        ],
+        "nuevo": [
+          30.0,
+          "no known savings"
+        ],
+        "distancia": 2.0,
+        "p_good": 0.6427515073026453
+      },
+      {
+        "vars": [
+          "duration",
+          "credit_amount",
+          "savings_status"
+        ],
+        "original": [
+          36.0,
+          6887.0,
+          "<100"
+        ],
+        "nuevo": [
+          30.0,
+          6579.0,
+          "no known savings"
+        ],
+        "distancia": 2.2912529550827423,
+        "p_good": 0.6427515073026453
+      },
+      {
+        "vars": [
+          "duration",
+          "savings_status",
+          "installment_commitment"
+        ],
+        "original": [
+          36.0,
+          "<100",
+          4.0
+        ],
+        "nuevo": [
+          30.0,
+          "no known savings",
+          3.0
+        ],
+        "distancia": 3.0,
+        "p_good": 0.6560606718786008
+      }
+    ],
+    "p_original": 0.10259624113392175
+  },
+  "t35a_extra": {
+    "N=10000": {
+      "jaccard": 1.0,
+      "nef": 9612.827449559445
+    },
+    "N=20000": {
+      "jaccard": 1.0,
+      "nef": 19228.41513828253
+    },
+    "N=40000": {
+      "jaccard": 1.0,
+      "nef": 38455.63244611177
+    }
+  },
+  "t35b": {
+    "cliente": "good(p>0.8)",
+    "variable": "existing_credits",
+    "rank_shap": 9.0,
+    "sens_sigma": {
+      "sig=0.25": {
+        "rank_lime": 12.0,
+        "coef": -0.008543532442416058,
+        "spearman": 0.9639097744360902
+      },
+      "sig=0.5": {
+        "rank_lime": 13.0,
+        "coef": -0.014159443889167674,
+        "spearman": 0.9669172932330825
+      },
+      "sig=0.75": {
+        "rank_lime": 14.0,
+        "coef": -0.013835813055761093,
+        "spearman": 0.9609022556390976
+      },
+      "sig=1.5": {
+        "rank_lime": 14.0,
+        "coef": -0.013598668508577752,
+        "spearman": 0.9518796992481202
+      }
+    },
+    "valor_cliente": 1.0,
+    "perfil": {
+      "x": [
+        1.0,
+        2.0,
+        3.0,
+        4.0
+      ],
+      "p": [
+        0.900545775925169,
+        0.9436760139238837,
+        0.943081767959722,
+        0.943081767959722
+      ]
+    },
+    "phi": -0.14499048676574602
+  },
+  "t35d": [
+    {
+      "var": "duration",
+      "phi": -1.1702527300591463,
+      "inmutable": false,
+      "accionable": true,
+      "en_contrafactuales": true,
+      "MAD": 6.0,
+      "p_max_cambiando_solo_esta": 0.3988908523456217,
+      "valor_para_p_max": 16.0,
+      "costo_distancia_p_max": 3.3333333333333335
+    },
+    {
+      "var": "checking_status",
+      "phi": -0.6690463102702051,
+      "inmutable": false,
+      "accionable": true,
+      "en_contrafactuales": false,
+      "MAD": 1.0,
+      "p_max_cambiando_solo_esta": 0.1763457241215843,
+      "valor_para_p_max": ">=200",
+      "costo_distancia_p_max": 1.0
+    },
+    {
+      "var": "purpose",
+      "phi": -0.6566489819134586,
+      "inmutable": false,
+      "accionable": false,
+      "en_contrafactuales": false,
+      "MAD": 2.0,
+      "p_max_cambiando_solo_esta": 0.39230287375994943,
+      "valor_para_p_max": "used car",
+      "costo_distancia_p_max": 1.0
+    }
+  ]
+}
